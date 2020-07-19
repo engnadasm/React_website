@@ -28,7 +28,7 @@ class SignUp extends Component {
     					<label for="inputPassword">Password</label>
    					    <input type="password" className="form-control" id="inputPassword"></input>
  					    </div>
-              <button className="btn btn-outline-dark float-right" type="submit"><i class="fa fa-sign-in"></i> Sign up</button>
+              <button className="btn btn-outline-dark float-right" type="submit"><i className="fa fa-sign-in"></i> Sign up</button>
   				  </form>
             </div>
             </div>

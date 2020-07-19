@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SignUp from './components/SignUp';
+import Login from './components/Login';
 ReactDOM.render(
   <React.StrictMode>
     <SignUp />

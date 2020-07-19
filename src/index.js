@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import Footer from './components/Footer';
 ReactDOM.render(
   <React.StrictMode>
     <SignUp />

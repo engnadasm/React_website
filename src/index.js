@@ -8,11 +8,21 @@ import 'font-awesome/css/font-awesome.min.css';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Footer from './components/Footer';
+import Home from "./components/Home";
+import NavBar from "./components/navbar";
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <SignUp />
-  </React.StrictMode>,
-  document.getElementById('root')
+    /* <React.StrictMode>
+   <SignUp />
+ </React.StrictMode>,*/
+    <React.Fragment>
+    <NavBar />
+    <React.StrictMode>
+    <Home/>
+    </React.StrictMode>
+    </React.Fragment>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

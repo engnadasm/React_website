@@ -28,7 +28,7 @@ class Home extends Component {
             <div class="card p-3 py-4 Card">
             <h4 class= "advancedText" >&emsp; select Categories &emsp;
             &emsp; &emsp; &emsp; &emsp; &emsp;
-             select Place</h4>
+            select Place</h4>
 
             <div class="container">
             <div class="row">

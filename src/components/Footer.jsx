@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import image from "./google-play-brands.svg"
+import image from "./img/google-play-brands.svg"
 class Footer extends Component {
 
 	 render(){
 
   		return (
-  		<footer className="row-footer">
-        <div className="container" style={{backgroundColor:"#ccccff"}}>
+  		<footer>
+        <div style={{backgroundColor:"#ccccff"}}>
             <div className="row row-content pt-3">
                 <div className="col-12 col-offset-1 col-sm-4 ">
                     <h5>POPULAR SEARCHES</h5>

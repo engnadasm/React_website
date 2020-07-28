@@ -10,7 +10,8 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import Home from "./components/Home";
 import NavBar from "./components/navbar";
-
+import SearchResult from "./components/SearchResult";
+import "./fonts/KronaOne-Regular.ttf";
 
 ReactDOM.render(
     /* <React.StrictMode>
@@ -19,7 +20,8 @@ ReactDOM.render(
     <React.Fragment>
     <NavBar />
     <React.StrictMode>
-    <Home/>
+    <SearchResult/>
+    <Footer/>
     </React.StrictMode>
     </React.Fragment>,
     document.getElementById('root')

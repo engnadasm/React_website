@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import Media from 'react-bootstrap/Media';
 import image from './img/5.jpg';
+import './Shop.css';
 class Shop extends Component {
  
 
@@ -25,15 +26,18 @@ class Shop extends Component {
 
 	 render(){
              var linkStyle;
+             var className;
                if (this.state.isHovered) {
-                 linkStyle = {height: 256, cursor: 'pointer'}
+                 linkStyle = {height: 256, cursor: 'pointer',boxShadow: '0 4px 8px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}
+                 className = "fade-in"
                } else {
-                 linkStyle = {color: '#000'}
+                 linkStyle = {color: '#000',boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}
+                 className = ""
                }
 
   		return (
-  		<div >
-            <div className="my-2" key={this.props.shopObject.id} style={{backgroundColor:"#b3ccff"}}>
+  		<div className={className}>
+            <div className="my-3" key={this.props.shopObject.id} style={{backgroundColor:"#b3ccff"}}>
 
                 <Media onClick={()=>this.props.onClick(this.props.shopObject)}
                 style={linkStyle} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
@@ -45,7 +49,7 @@ class Shop extends Component {
                     alt={this.props.shopObject.image}
                   />
                   <Media.Body>
-                    <h5>{this.props.shopObject.title}</h5>
+                    <h3>{this.props.shopObject.title}</h3>
                     <p>
                      {this.props.shopObject.description}
                     </p>

@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'KronaOne';
+  src: local('KronaOne'), url(./fonts/KronaOne-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'RubikMonoOne';
+  src: local('RubikMonoOne'), url(./fonts/RubikMonoOne-Regular.ttf) format('truetype');
+}

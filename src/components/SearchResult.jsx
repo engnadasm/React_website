@@ -60,10 +60,13 @@ class SearchResult extends Component {
   		return (
   			<div>
   			<div className="jumbotron">
-  				<div className="container">
+  				<div className="">
+  				<div className="mb-5">
+  				  <h3 className="text-center" style={{fontFamily: 'RubikMonoOne'}}>Search Results</h3>
+  				  </div>
   				  <div className="row">
-  				  <div className="col-12 col-offset-1 col-sm-2 d-none d-md-block">
-			  				<nav className="sidenav">
+  				  <div className="col-12 col-offset-1 col-sm-3 d-none d-md-block">
+			  				<nav className="sidenav font">
 			  						<a href="#">All<div className="tab">({this.state.shopObjects.length})</div></a>
 			                        <a href="#">Ladies<div className="tab">({this.state.shopObjects.length})</div></a>
 			                        <a href="#">Men<div className="tab">({this.state.shopObjects.length})</div></a>
@@ -72,7 +75,7 @@ class SearchResult extends Component {
 			                </nav>
 			       </div>
 			       <div className="col-12 col-sm-9">
-						  <DropdownButton
+						  <DropdownButton className="font" 
 							  alignRight
 							  title="Sort by"
 							  id="dropdown-menu-align-right"
@@ -82,7 +85,7 @@ class SearchResult extends Component {
 						  <Dropdown.Item eventKey="2">Rate</Dropdown.Item>
 						</DropdownButton>
 						{this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject => <Shop shopObject={shopObject} onClick={this.viewShopPage}/>)}
-						<nav aria-label="Page navigation" className="page-nav">
+						<nav aria-label="Page navigation" className="page-nav font">
 						  <ul className="pagination justify-content-center">
 						    <li className="page-item"><a className="page-link" onClick={this.handlePrevious}>Previous</a></li>
 						    <li className="page-item"><a className="page-link" onClick={this.handleNext}>Next</a></li>

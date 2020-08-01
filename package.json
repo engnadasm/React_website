@@ -10,6 +10,7 @@
     "font-awesome": "^4.7.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
+    "react-css-dropdown": "^1.1.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-star-ratings": "^2.3.0"

@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import './navbar.jsx';
-import NavBar from "./navbar";
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
+import Jumbotron from "./img/5.jpg"
+import './Home.css';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
-import Jumbotron from "./img/5.jpg"
-import './Home.css';
 import Carousel from 'react-bootstrap/Carousel';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+import SearchResult from './SearchResult';
+import NavBar from "./navbar";
 
 var sectionStyle = {
     backgroundImage: `url(${Jumbotron})`,
@@ -19,42 +16,65 @@ var sectionStyle = {
 }
 
 class Home extends Component {
+  constructor(props) {
+      super()
+      this.state = {
+          // Takes active tab from props if it is defined there
+          dropdownPlaces:  1,
+          dropdownCateg: 1,
+          M : NavBar
+      };
+      // Bind the dropdownSelect function already here (not in the render function)
+      this.search_but = this.search_but.bind(this);
+  }
+
+  search_but() {
+      var categorieslistValue = document.getElementById('Categorieslist').value;
+      var placeslistValue = document.getElementById('Placeslist').value;
+      this.setState({
+          dropdownPlaces: placeslistValue,
+          dropdownCateg : categorieslistValue,
+          M : SearchResult
+      });
+      alert(categorieslistValue + " then " + placeslistValue);
+
+  };
     render() {
         return (
 
+          /*this for state select Categories & Place*/
             <form class = "form_body">
             <div class="row d-flex justify-content-center">
             <div class="col-md-10">
             <div class="card p-3 py-4 Card">
-            <h4 class= "advancedText" >&emsp; select Categories &emsp;
+            <h4 class= "advancedText" >&emsp; select Categories &emsp; &emsp; &emsp;
             &emsp; &emsp; &emsp; &emsp; &emsp;
             select Place</h4>
 
+            {/*this for the rectangle of Search*/}
             <div class="container">
             <div class="row">
             <div class="col-12">
             <div class="input-group">
-
-
-            <Form.Control style={{background: "#00838f"}}  as="select" size="lg">
-            <option>All Categories</option>
-            <option>1 select</option>
-            <option>2 select</option>
-            <option>3 select</option>
+            {/*this for the dropdown of Categories*/}
+            <Form.Control style={{background: "#00838f"}}  as="select" size="lg"  id="Categorieslist" >
+            <option value="1">All Categories</option>
+            <option value="2">1 select</option>
+            <option value="3">2 select</option>
+            <option value="4">3 select</option>
             </Form.Control>
-
-            <Form.Control as="select" size="lg">
-            <option>All Places</option>
-            <option>1 select</option>
-            <option>2 select</option>
-            <option>3 select</option>
+            {/*this for the dropdown of places*/}
+            <Form.Control as="select" size="lg" id="Placeslist" >
+            <option value="1">All Places</option>
+            <option value="2">1 select</option>
+            <option value="3">2 select</option>
+            <option value="4">3 select</option>
             </Form.Control>
-
+            {/*this for the search button*/}
             <div class="input-group-append">
-            <button class="btn btn-secondary btn-block"type="button">
+            <button class="btn btn-secondary btn-block"type="button"onClick={this.search_but}>
             <i class="fa fa-search"></i>
             </button>
-
             </div>
             </div>
             </div>
@@ -64,6 +84,7 @@ class Home extends Component {
             </div>
             </div>
 
+            {/*this for the rectangle of Sentence "Top store"*/}
             <div class="row d-flex justify-content-center">
             <div class="col-md-10">
             <div class="card p-3 py-4 Card">
@@ -74,12 +95,13 @@ class Home extends Component {
             </div>
             </div>
 
+          {/*this for the rectangle of Ads*/}
             <Carousel style={{ height: '30rem' }}>
             <Carousel.Item>
             <div class="row d-flex justify-content-center">
             <div class="col-md-10">
             <CardDeck style={{ height: '28rem' }}>
-
+          {/*this for the first of Ads*/}
             <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
             <Card.Body>
@@ -103,7 +125,7 @@ class Home extends Component {
             <button class="btn btn-secondary btn-block">View more Details</button>
             </Card.Body>
             </Card>
-
+          {/*this for the second of Ads*/}
             <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
             <Card.Body>
@@ -127,7 +149,7 @@ class Home extends Component {
             <button class="btn btn-secondary btn-block">View more Details</button>
             </Card.Body>
             </Card>
-
+            {/*this for the third of Ads*/}
             <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
             <Card.Body>
@@ -151,7 +173,7 @@ class Home extends Component {
             <button class="btn btn-secondary btn-block">View more Details</button>
             </Card.Body>
             </Card>
-
+          {/*the end of ads*/}
             </CardDeck>
             </div>
             </div>
@@ -241,26 +263,6 @@ class Home extends Component {
             </Carousel>
 
 
-            <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-            <div class="card p-3 py-4 Card">
-            <div class="row g-3 mt-2">
-            <div class="col-md-3">
-            <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-            <div class="card p-3 py-4 Card">
-            <div class="row g-3 mt-2">
-            <div class="col-md-3">
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
 
             </form>
 

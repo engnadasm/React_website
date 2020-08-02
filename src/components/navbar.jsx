@@ -7,6 +7,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import Home from './Home';
 import Footer from './Footer';
+import SearchResult from './SearchResult';
 
 class NavBar extends Component {
     constructor(props) {
@@ -26,7 +27,8 @@ class NavBar extends Component {
 
     dropdownSelect(selectedTab) {
         this.setState({
-            activeDropMenu: selectedTab
+            activeDropMenu: selectedTab,
+            M : SearchResult
         });
         alert("You prefer browsing internet with " + selectedTab)
     };
@@ -60,22 +62,22 @@ class NavBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link class="active" href="#home" eventKey={1} title="Tab 1"
+                        <Nav.Link class="active" href="#home" eventKey={1} 
                         ><i class="fa fa-fw fa-home" ></i> Home</Nav.Link>
                         <NavDropdown  class="fa fa-fw fa-book" activeKey={this.state.activeDropMenu} onSelect={this.dropdownSelect}
-                            title="Categories" type="hj" id="browsers2" href="#Categories-dropdown">
-                            <NavDropdown.Item  eventKey={1} title="Tab 1" href="#action/4.1" >Shoes</NavDropdown.Item>
-                            <NavDropdown.Item eventKey={2} title="Tab 2" href="#action/4.2" >Kids</NavDropdown.Item>
-                            <NavDropdown.Item  eventKey={3} title="Tab 3" href="#action/4.3">Women</NavDropdown.Item>
-                            <NavDropdown.Item eventKey={4} title="Tab 4" href="#action/4.4">Men</NavDropdown.Item>
+                            title="Categories">
+                            <NavDropdown.Item  eventKey={1} >Shoes</NavDropdown.Item>
+                            <NavDropdown.Item eventKey={2} >Kids</NavDropdown.Item>
+                            <NavDropdown.Item  eventKey={3}>Women</NavDropdown.Item>
+                            <NavDropdown.Item eventKey={4}>Men</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item eventKey={5} title="Tab 5" href="#action/4.5">All</NavDropdown.Item>
+                            <NavDropdown.Item eventKey={5}>All</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav inline>
-                        <Nav.Link href="#Login" eventKey={2} title="Tab 2"
+                        <Nav.Link href="#Login" eventKey={2}
                         ><i class="fa fa-fw fa-sign-in" ></i> Login</Nav.Link>
-                        <Nav.Link href="#SignUp" eventKey={3} title="Tab 3"
+                        <Nav.Link href="#SignUp" eventKey={3}
                         ><i class="fa fa-fw fa-user" ></i> SignUp</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

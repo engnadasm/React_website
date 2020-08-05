@@ -8,6 +8,10 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Carousel from 'react-bootstrap/Carousel';
 import SearchResult from './SearchResult';
 import NavBar from "./navbar";
+import SignUp from './SignUp';
+import Login from './Login';
+import Footer from './Footer';
+import ShopInHome from "./ShopInHome";
 
 var sectionStyle = {
     backgroundImage: `url(${Jumbotron})`,
@@ -16,32 +20,112 @@ var sectionStyle = {
 }
 
 class Home extends Component {
+
   constructor(props) {
       super()
       this.state = {
           // Takes active tab from props if it is defined there
           dropdownPlaces:  1,
           dropdownCateg: 1,
-          M : NavBar
+          boolean: true,
+          M : NavBar,
+
+          shopObjects:[
+          {id:1,
+          image:'image1',
+          title:'Title1',
+          rating:3,
+          description:'description2, i want to know what the maximum length of description'+
+        'to limit it to be more beautiful so i writting more and more and more more and more and more'+
+        'ore more and more'
+
+          },
+          {id:2,
+           image:'image2',
+          title:'Title2',
+          rating:4,
+          description:'description2'
+          },
+          {id:3,
+           image:'image3',
+           title:'Title3',
+           rating:2,
+          description:'description3'
+          },
+          {id:4,
+           image:'image6',
+           title:'Titl4',
+           rating:2,
+          description:'description4'
+        },
+          {id:5,
+           image:'image5',
+          title:'Title5',
+          rating:4,
+          description:'description5'
+          },
+          {id:6,
+           image:'image6',
+           title:'Title6',
+           rating:2,
+          description:'description6'
+        },
+        {id:7,
+         image:'image6',
+         title:'Title7',
+         rating:2,
+        description:'description7'
+        }],
+
+
+          page : 0
       };
       // Bind the dropdownSelect function already here (not in the render function)
       this.search_but = this.search_but.bind(this);
+      this.handlePrevious = this.handlePrevious.bind(this);
+      this.handleNext = this.handleNext.bind(this);
   }
 
-  search_but() {
+  viewShopPage=(shopObject)=>{
+  console.log("clicked-----------------------");
+  console.log(shopObject);
+  alert("clicked ");
+
+  }
+
+  handlePrevious=()=>{
+console.log("Previous-----------------------");
+alert("Page Previous " + this.state.page);
+
+if(this.state.page > 0){
+this.setState({page : this.state.page -1})
+}
+}
+handleNext=()=>{
+console.log("Next-----------------------");
+var sum = this.state.shopObjects.length - 3 * (this.state.page + 1);
+
+alert("Page Next " + this.state.page + "then " + sum);
+if(this.state.shopObjects.length - 3 * (this.state.page + 1) > 0){
+this.setState({page : this.state.page + 1})
+} else if(this.state.shopObjects.length - 3 * (this.state.page + 1) <= 0){
+  this.setState({page : 0})
+}
+}
+  search_but=()=> {
       var categorieslistValue = document.getElementById('Categorieslist').value;
       var placeslistValue = document.getElementById('Placeslist').value;
       this.setState({
           dropdownPlaces: placeslistValue,
           dropdownCateg : categorieslistValue,
-          M : SearchResult
+          M : SearchResult,
+          boolean: false
       });
-      alert(categorieslistValue + " then " + placeslistValue);
 
   };
     render() {
+      if(this.state.boolean) {
         return (
-
           /*this for state select Categories & Place*/
             <form class = "form_body">
             <div class="row d-flex justify-content-center">
@@ -72,7 +156,7 @@ class Home extends Component {
             </Form.Control>
             {/*this for the search button*/}
             <div class="input-group-append">
-            <button class="btn btn-secondary btn-block"type="button"onClick={this.search_but}>
+            <button herf="SearchResult" class="btn btn-secondary btn-block"type="button"onClick={this.search_but}>
             <i class="fa fa-search"></i>
             </button>
             </div>
@@ -94,180 +178,32 @@ class Home extends Component {
             </div>
             </div>
             </div>
-
           {/*this for the rectangle of Ads*/}
-            <Carousel style={{ height: '30rem' }}>
+            <Carousel style={{ height: '30rem' }} onChange={this.handleNext}
+            onClick={this.handleNext} >
             <Carousel.Item>
-            <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
             <CardDeck style={{ height: '28rem' }}>
+
           {/*this for the first of Ads*/}
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
-            <Card.Body>
-            <Card.Title>Store name</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-            </div>
-            </Card.Text>
-            <button class="btn btn-secondary btn-block">View more Details</button>
-            </Card.Body>
-            </Card>
-          {/*this for the second of Ads*/}
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
-            <Card.Body>
-            <Card.Title>Store name</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-            </div>
-            </Card.Text>
-            <button class="btn btn-secondary btn-block">View more Details</button>
-            </Card.Body>
-            </Card>
-            {/*this for the third of Ads*/}
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
-            <Card.Body>
-            <Card.Title>Store name</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-            </div>
-            </Card.Text>
-            <button class="btn btn-secondary btn-block">View more Details</button>
-            </Card.Body>
-            </Card>
-          {/*the end of ads*/}
-            </CardDeck>
-            </div>
-            </div>
-            </Carousel.Item>
-
-            <Carousel.Item>
+          {this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject =>
             <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-            <CardDeck style={{ height: '28rem' }}>
-
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
-            <Card.Body>
-            <Card.Title>Store name</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-            </div>
-            </Card.Text>
-            <button class="btn btn-secondary btn-block">View more Details</button>
-            </Card.Body>
-            </Card>
-
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
-            <Card.Body>
-            <Card.Title>Store name</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-            </div>
-            </Card.Text>
-            <button class="btn btn-secondary btn-block">View more Details</button>
-            </Card.Body>
-            </Card>
-
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron } />
-            <Card.Body>
-            <Card.Title>Store name</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text">1 star</label>
-            </div>
-            </Card.Text>
-            <button class="btn btn-secondary btn-block">View more Details</button>
-            </Card.Body>
-            </Card>
-
-            </CardDeck>
-            </div>
-            </div>
-            </Carousel.Item>
-            </Carousel>
+            <div class="col-md-4">
+          <ShopInHome shopObject={shopObject} onClick={this.viewShopPage}/>
+          </div>
+          </div>
+           )}
+           </CardDeck>
+           </Carousel.Item>
 
 
-
-            </form>
-
-
-        );
+ </Carousel>
+            </form>);
+      }
+        else {
+          return(
+            <NavBar  onClick={this.state.boolean= true } change={true}/>
+          );
+        }
     }
 }
 

@@ -30,13 +30,14 @@ class NavBar extends Component {
             activeDropMenu: selectedTab,
             M : SearchResult
         });
-        alert("You prefer browsing internet with " + selectedTab)
+      {/*  alert("SearchResult " + selectedTab)*/}
     };
 
     navSelect(selectedTab) {
         this.setState({
             navTap: selectedTab
         });
+        alert("navTap "  + selectedTab)
 
         if(selectedTab == 1){
           this.setState({
@@ -54,6 +55,7 @@ class NavBar extends Component {
 
     };
     render() {
+      if(!this.props.change) {
         return (
           <React.Fragment>
             <Navbar fill variant="tabs" collapseOnSelect expand="lg" bg="dark" variant="dark"
@@ -62,16 +64,17 @@ class NavBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link class="active" href="#home" eventKey={1} 
+                        <Nav.Link  href="#home" eventKey={1}
                         ><i class="fa fa-fw fa-home" ></i> Home</Nav.Link>
-                        <NavDropdown  class="fa fa-fw fa-book" activeKey={this.state.activeDropMenu} onSelect={this.dropdownSelect}
+                        <NavDropdown  class="fa fa-fw fa-book" activeKey={this.state.activeDropMenu}
+                        onSelect={this.dropdownSelect} href="#Categories"
                             title="Categories">
-                            <NavDropdown.Item  eventKey={1} >Shoes</NavDropdown.Item>
-                            <NavDropdown.Item eventKey={2} >Kids</NavDropdown.Item>
-                            <NavDropdown.Item  eventKey={3}>Women</NavDropdown.Item>
-                            <NavDropdown.Item eventKey={4}>Men</NavDropdown.Item>
+                            <NavDropdown.Item  href="#Categories" eventKey={1} >Shoes</NavDropdown.Item>
+                            <NavDropdown.Item  href="#Categories"eventKey={2} >Kids</NavDropdown.Item>
+                            <NavDropdown.Item  href="#Categories" eventKey={3}>Women</NavDropdown.Item>
+                            <NavDropdown.Item  href="#Categories"eventKey={4}>Men</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item eventKey={5}>All</NavDropdown.Item>
+                            <NavDropdown.Item  href="#Categories"eventKey={5}>All</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav inline>
@@ -87,8 +90,26 @@ class NavBar extends Component {
             <Footer/>
             </React.StrictMode>
             </React.Fragment>
+        );}
+        else{
+          this.state = {
+              // Takes active tab from props if it is defined there
+              activeDropMenu:  1,
+              navTap: 1,
+              M : Home
+          };
 
-        );
+          this.props = {
+            change: false
+          };
+
+          return(
+          <React.Fragment>
+          <React.StrictMode>
+          <SearchResult href="#Categories"/>
+          </React.StrictMode>
+          </React.Fragment>);
+        }
     }
 
 }

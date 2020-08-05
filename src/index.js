@@ -8,6 +8,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import NavBar from "./components/navbar";
 import SearchResult from "./components/SearchResult";
 import "./fonts/KronaOne-Regular.ttf";
+import BasicExample from "./components/test2";
 
 
 

@@ -8,10 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-css-dropdown": "^1.1.2",
     "react-dom": "^16.13.1",
+    "react-elastic-carousel": "^0.6.7",
     "react-scripts": "3.4.1",
     "react-star-ratings": "^2.3.0"
   },

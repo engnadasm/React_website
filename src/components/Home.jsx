@@ -184,7 +184,7 @@ this.setState({page : this.state.page + 1})
                      <div class="card p-0 py-4 Card">
                      <div class="row d-flex justify-content-center">
 
-            <li className="page-item"><a className="prev" onClick={this.handlePrevious}>&#10094;</a></li>
+            <a className="prev" onClick={this.handlePrevious}>&#10094;</a>
             <CardDeck style={{ height: '28rem' }}>
           {/*this for the first of Ads*/}
           {this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject =>
@@ -196,7 +196,7 @@ this.setState({page : this.state.page + 1})
            )}
 
            </CardDeck>
-           <li className="page-item"><a className="next" onClick={this.handleNext}>&#10095;</a></li>
+           <a className="next" onClick={this.handleNext}>&#10095;</a>
 
            </div>
            </div>

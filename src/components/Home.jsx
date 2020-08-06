@@ -108,8 +108,6 @@ var sum = this.state.shopObjects.length - 3 * (this.state.page + 1);
 alert("Page Next " + this.state.page + "then " + sum);
 if(this.state.shopObjects.length - 3 * (this.state.page + 1) > 0){
 this.setState({page : this.state.page + 1})
-} else if(this.state.shopObjects.length - 3 * (this.state.page + 1) <= 0){
-  this.setState({page : 0})
 }
 }
   search_but=()=> {
@@ -174,29 +172,42 @@ this.setState({page : this.state.page + 1})
             <div class="card p-3 py-4 Card">
             <h4 class= "advancedText">The Top store :</h4>
             <div class="row d-flex justify-content-center">
+
             </div>
             </div>
             </div>
             </div>
           {/*this for the rectangle of Ads*/}
-            <Carousel style={{ height: '30rem' }} onChange={this.handleNext}
-            onClick={this.handleNext} >
-            <Carousel.Item>
-            <CardDeck style={{ height: '28rem' }}>
 
+                     <div class="row d-flex justify-content-center">
+                     <div class="col-md-10">
+                     <div class="card p-0 py-4 Card">
+                     <div class="row d-flex justify-content-center">
+
+            <li className="page-item"><a className="prev" onClick={this.handlePrevious}>&#10094;</a></li>
+            <CardDeck style={{ height: '28rem' }}>
           {/*this for the first of Ads*/}
           {this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject =>
             <div class="row d-flex justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-12">
           <ShopInHome shopObject={shopObject} onClick={this.viewShopPage}/>
           </div>
           </div>
            )}
+
            </CardDeck>
-           </Carousel.Item>
+           <li className="page-item"><a className="next" onClick={this.handleNext}>&#10095;</a></li>
+
+           </div>
+           </div>
+           </div>
+           </div>
 
 
- </Carousel>
+
+
+
+
             </form>);
       }
         else {

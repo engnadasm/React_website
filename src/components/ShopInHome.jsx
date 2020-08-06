@@ -28,7 +28,7 @@ class ShopInHome extends Component {
 
 	 render(){
   		return (
-            <Card key={this.props.shopObject.id} style={{ width: '18rem' }}>
+            <Card key={this.props.shopObject.id} style={{ width: '19rem' }}>
                 <Card onClick={()=>this.props.onClick(this.props.shopObject)}>
                       <Card.Img
                     variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron }

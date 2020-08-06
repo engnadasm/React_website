@@ -1,0 +1,21 @@
+.vl {
+  border-left: 6px solid;
+  Color : #66A5CC;
+  height: 700px;
+  position: absolute;
+  left: 105%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.v2{
+  top: 0;
+  left: 2%;
+
+}
+hr.new4 {
+  border: 2px solid ;
+  Color : #66A5CC;
+  border-radius: 1px;
+
+}

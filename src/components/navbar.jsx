@@ -8,6 +8,7 @@ import Login from './Login';
 import Home from './Home';
 import Footer from './Footer';
 import SearchResult from './SearchResult';
+import StoreElement from "./StoreElement";
 
 class NavBar extends Component {
     constructor(props) {
@@ -92,6 +93,27 @@ class NavBar extends Component {
             </React.Fragment>
         );}
         else{
+          if(this.props.change2) {
+          this.state = {
+              // Takes active tab from props if it is defined there
+              activeDropMenu:  1,
+              navTap: 1,
+              M : Home
+          };
+
+          this.props = {
+            change: false,
+            change2: false
+          };
+
+          return(
+          <React.Fragment>
+          <React.StrictMode>
+          <SearchResult href="#Categories"/>
+          </React.StrictMode>
+          </React.Fragment>);
+        }
+        else {
           this.state = {
               // Takes active tab from props if it is defined there
               activeDropMenu:  1,
@@ -106,10 +128,12 @@ class NavBar extends Component {
           return(
           <React.Fragment>
           <React.StrictMode>
-          <SearchResult href="#Categories"/>
+          <StoreElement href="#Categories"/>
           </React.StrictMode>
           </React.Fragment>);
         }
+      }
+
     }
 
 }

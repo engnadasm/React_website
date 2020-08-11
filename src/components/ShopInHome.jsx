@@ -5,6 +5,8 @@ import image from './img/5.jpg';
 import './Shop.css';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from "./img/5.jpg"
+import CardDeck from 'react-bootstrap/CardDeck';
+import Carousel from 'react-bootstrap/Carousel';
 
 var sectionStyle = {
     backgroundImage: `url(${Jumbotron})`,
@@ -28,10 +30,10 @@ class ShopInHome extends Component {
 
 	 render(){
   		return (
-            <Card key={this.props.shopObject.id} style={{ width: '19rem' }}>
+            <Card key={this.props.shopObject.id} style={{ height: '28rem',width: '19rem' }}>
                 <Card onClick={()=>this.props.onClick(this.props.shopObject)}>
                       <Card.Img
-                    variant="top" style={{height:'50%',width:'100%'}} src={ Jumbotron }
+                    variant="top" style={{height:'50%',width:'100%'}} src={require('./img/' +this.props.shopObject.image+ '.jpg')}
                     alt={this.props.shopObject.image}/>
                   <Card.Body>
                     <Card.Title>{this.props.shopObject.title}</Card.Title>
@@ -52,6 +54,7 @@ class ShopInHome extends Component {
                   </Card.Body>
                 </Card>
             </Card>
+
   		)
   }
 }

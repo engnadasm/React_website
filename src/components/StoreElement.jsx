@@ -5,27 +5,59 @@ import image from './img/4.jpg';
 import image2 from './img/3.jpg';
 import ExampleComponent from "react-rounded-image";
 import './StoreElement.css';
+import CardDeck from 'react-bootstrap/CardDeck';
+import Carousel from 'react-bootstrap/Carousel';
+import ShopInHome from "./ShopInHome";
 
 class StoreElement extends Component {
     constructor(){
         super();
         this.state = {
+          shopObjects:[
+          {id:1,
+          image: '3',
+          title:'Title1',
+          rating:3,
+          description:'description1 This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.'
+          },
+          {id:2,
+           image: '4',
+          title:'Title2',
+          rating:4,
+          description:'description2'
+          },
+          {id:3,
+           image:'5',
+           title:'Title3',
+           rating:2,
+          description:'description3'
+          },
+          {id:6,
+           image:'6',
+           title:'Title6',
+           rating:2,
+          description:'description6'
+          }],
 
+          page : 0
         };
-        this.handlePrevious = this.handlePrevious.bind(this);
         this.handleNext = this.handleNext.bind(this);
     }
-    handlePrevious=()=>{
-        alert("Page Previous " );
 
-    }
     handleNext=()=>{
-        alert("Page Next ");
+      console.log("Next-----------------------");
+      var sum = this.state.shopObjects.length - 1 * (this.state.page + 1);
+      console.log("Page Next " + this.state.page + "then " + sum);
 
+      if(sum > 0){
+        this.setState({page : this.state.page + 1})
+      } else if(sum <= 0){
+        this.setState({page : 0})
+      }
     }
     render(){
         return (
-            <div>
+            <div style={{backgroundColor:"#b3ccff"}}>
                     <div className="row">
                         <div className=" my-3 mx-3 col-12 col-offset-1 col-sm-3 d-none d-md-block">
 
@@ -52,44 +84,33 @@ class StoreElement extends Component {
                                   numberOfStars={5}
                                   name='rating'/>
                                 </div>
-                            <div class="vl"></div>
-                        </div>
-                        <div class="col-md-8 v2">
-                            <div class="card p-3 py-4 Card">
-                                <div id="demo" class="carousel slide" data-ride="carousel">
-                                    <ul class="carousel-indicators">
-                                        <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                        <li data-target="#demo" data-slide-to="1"></li>
-                                        <li data-target="#demo" data-slide-to="2"></li>
-                                    </ul>
-
-                                    <div class="carousel-inner">
-
-                                        <div class="carousel-item active">
-                                            <img src={image} alt="Los Angeles" width="1100" height="350"/>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src={image2} alt="Chicago" width="1100" height="350"/>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src={image} alt="New York" width="1100" height="350"/>
-                                        </div>
-                                    </div>
-
-                                    <a class="carousel-control-prev" href="#demo" data-slide="prev" onClick={this.handlePrevious}>
-                                        <span class="carousel-control-prev-icon"></span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#demo" data-slide="next" onClick={this.handleNext}>
-                                        <span class="carousel-control-next-icon"></span>
-                                    </a>
-                                </div>
+                            <div class="vl">
                             </div>
-                            <button class="my-3 btn btn-secondary btn-block">View more Details</button>
-                            <hr class="new4"/>
-                        </div>
-                    </div>
+                            </div>
+                        <div class="col-md-8 v2">
+                        <div class="card p-3 py-4 Card">
 
-            </div>
+                            <Carousel onSelect={this.handleNext}
+                            onClick={this.handleNext} >
+                          {/*this for the first of Ads*/}
+                          {this.state.shopObjects.map((shopObjects1, index) =>
+                            <Carousel.Item>
+                            <div class="row d-flex justify-content-center">
+                            <div class="col-md-12">
+                            <CardDeck >
+                            <img src={require('./img/' +shopObjects1.image+ '.jpg')} alt="Chicago" width="1100" height="350" />
+                            </CardDeck>
+                            </div>
+                            </div>
+                            </Carousel.Item>
+                          )}
+                          </Carousel>
+                          </div>
+                          <button class="my-3 btn btn-secondary btn-block">View more Details</button>
+                          <hr class="new4"/>
+                          </div>
+                          </div>
+                          </div>
 
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./UserProfile.css";
+import "./css/UserProfile.css";
 import DefaultImg from "./img/defaultImg.png"
 import Shop from "./Shop";
 class UserProfile extends Component {

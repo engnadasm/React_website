@@ -4,7 +4,7 @@ import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import image from './img/5.jpg';
-import './Shop.css';
+import './css/Shop.css';
 class Shop extends Component {
  
 
@@ -27,7 +27,7 @@ class Shop extends Component {
 
     renderButtons=()=>{
       if (this.props.isStarred ){return (<OverlayTrigger
-                                                    placement="right"
+                                                    placement="top"
                                                     overlay={
                                                       <Tooltip>
                                                         Add to <strong>my favourites</strong>.
@@ -37,7 +37,7 @@ class Shop extends Component {
                                                     <button className="btn btn-outline-dark float-right"><i class="fa fa-heart" aria-hidden="true"></i></button>
                                            </OverlayTrigger>)}
      if ( this.props.isRemovable){ return (<OverlayTrigger
-                                                    placement="right"
+                                                    placement="top"
                                                     overlay={
                                                       <Tooltip>
                                                         Remove from <strong>my favourites</strong>.

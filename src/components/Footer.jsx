@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import image from "./img/google-play-brands.svg"
+import "./css/Footer.css";
 class Footer extends Component {
 
 	 render(){

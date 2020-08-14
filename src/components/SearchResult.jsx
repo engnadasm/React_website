@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Shop from "./Shop";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import './SearchResult.css';
+import './css/SearchResult.css';
 class SearchResult extends Component {
 	  		state = {
             shopObjects:[
@@ -87,7 +87,7 @@ class SearchResult extends Component {
 						{this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject => <Shop isStarred={true} isRemovable={false} shopObject={shopObject} onSelect={this.viewShopPage} onStar={this.removeItem}/>)}
 						<nav aria-label="Page navigation" className="page-nav font">
 						  <ul className="pagination justify-content-center">
-						    <li className="page-item"><a className="page-link" onClick={this.handlePrevious}>Previous</a></li>
+						    <li className="page-item"><a className="page-link" onClick={this.handlePrevious}>Prev</a></li>
 						    <li className="page-item"><a className="page-link" onClick={this.handleNext}>Next</a></li>
 						  </ul>
 						</nav>

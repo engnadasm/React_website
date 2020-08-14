@@ -5,21 +5,12 @@ class Login extends Component {
         super()
 
         this.state = {
-            login: false,
             valid: false,
             fields:{},
             errors:{}
         }
 
     }
-
-    onCloseModal = () => {
-        this.setState({ login: false });
-    };
-
-     onOpenModalLogin = () => {
-        this.setState({ login: true });
-    };
 
     handleSubmit = (event) =>{
         let fields = this.state.fields;
@@ -36,7 +27,7 @@ class Login extends Component {
            let lastAtPos = fields["emailPhone"].lastIndexOf('@');
            let lastDotPos = fields["emailPhone"].lastIndexOf('.');
 
-           if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["emailPhone"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["emailPhone"].length - lastDotPos) > 2)) {
+           if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["emailPhone"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["emailPhone"].length - lastDotPos) > 2)) {
               formIsValid = false;
               errors["emailPhone"] = "Email is not valid";
             } 
@@ -61,12 +52,7 @@ class Login extends Component {
     const { login } = this.state;
     
     return (
-<div>
-<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#LoginPopup" onClick={this.onOpenModalLogin}>
-  Launch demo modal
-</button>
-
-<Modal size="sm" id="LoginPopup" tabIndex="-1" aria-labelledby="LoginPopupTitle" aria-hidden="true" show={this.state.login} onHide={this.onCloseModal}>
+<Modal size="sm" id="LoginPopup" tabIndex="-1" aria-labelledby="LoginPopupTitle" aria-hidden="true" show={this.props.showForm} onHide={()=>this.props.onClose()}>
       <Modal.Header closeButton className="bg-danger">
         <h5 className="modal-title" id="LoginPopupTitle">Login</h5>
       </Modal.Header>
@@ -74,7 +60,7 @@ class Login extends Component {
         <div className="container">
           <div className="row">
           <div className="col">
-            <form novalidate>
+            <form noValidate>
               <div className="form-group">
               <label htmlFor="inputPhoneEmail">Email/Phone</label>
                 <input type="email" className="form-control" id="inputPhoneEmail" onChange={this.handleChange} value={this.state.fields["emailPhone"]} name="emailPhone"></input>
@@ -105,11 +91,10 @@ class Login extends Component {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.onCloseModal}>Cancel</button>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={()=>this.props.onClose()}>Cancel</button>
         <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Login</button>
       </Modal.Footer>
 </Modal>
-</div>
 )
 }
 }

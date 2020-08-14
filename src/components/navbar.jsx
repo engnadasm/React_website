@@ -15,6 +15,7 @@ class NavBar extends Component {
 
         super()
         this.state = {
+            login: false,
             // Takes active tab from props if it is defined there
             activeDropMenu:  1,
             navTap: 1,
@@ -45,8 +46,10 @@ class NavBar extends Component {
               M : Home
           });
         }else if(selectedTab == 2){
+                        this.onOpenModalLogin()
           this.setState({
-              M : Login
+              //M : Login
+
           });
         }else if(selectedTab == 3){
           this.setState({
@@ -54,6 +57,13 @@ class NavBar extends Component {
           });
         }
 
+    };
+      onCloseModal = () => {
+        this.setState({ login: false });
+    };
+
+     onOpenModalLogin = () => {
+        this.setState({ login: true });
     };
     render() {
       if(!this.props.change) {
@@ -88,6 +98,7 @@ class NavBar extends Component {
             </Navbar>
             <React.StrictMode>
             <this.state.M/>
+            <Login showForm={this.state.login} onClose={this.onCloseModal}/>
             <Footer/>
             </React.StrictMode>
             </React.Fragment>

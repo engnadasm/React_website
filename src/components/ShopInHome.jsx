@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import Media from 'react-bootstrap/Media';
 import image from './img/5.jpg';
-import './Shop.css';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from "./img/5.jpg"
 import CardDeck from 'react-bootstrap/CardDeck';

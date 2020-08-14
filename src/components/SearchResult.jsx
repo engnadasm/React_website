@@ -84,7 +84,7 @@ class SearchResult extends Component {
 						  <Dropdown.Item eventKey="1">Name</Dropdown.Item>
 						  <Dropdown.Item eventKey="2">Rate</Dropdown.Item>
 						</DropdownButton>
-						{this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject => <Shop shopObject={shopObject} onClick={this.viewShopPage}/>)}
+						{this.state.shopObjects.slice(this.state.page * 3,(this.state.page + 1) * 3).map(shopObject => <Shop isStarred={true} isRemovable={false} shopObject={shopObject} onSelect={this.viewShopPage} onStar={this.removeItem}/>)}
 						<nav aria-label="Page navigation" className="page-nav font">
 						  <ul className="pagination justify-content-center">
 						    <li className="page-item"><a className="page-link" onClick={this.handlePrevious}>Previous</a></li>

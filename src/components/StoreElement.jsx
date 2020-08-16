@@ -8,6 +8,7 @@ import './StoreElement.css';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Carousel from 'react-bootstrap/Carousel';
 import ShopInHome from "./ShopInHome";
+import CommentList from "./comment_list";
 
 class StoreElement extends Component {
     constructor(){
@@ -57,16 +58,22 @@ class StoreElement extends Component {
     }
     render(){
         return (
-            <div style={{backgroundColor:"#b3ccff"}}>
-                    <div className="row">
-                        <div className=" my-3 mx-3 col-12 col-offset-1 col-sm-3 d-none d-md-block">
+          <div className="mx-1 my-1">
+          <div className="col-mb-10">
+            <div class="" fill expand="lg"  style={{backgroundColor:"#b3ccff"}}>
+                    <div className="row px-4 py-4">
+                    <div class="col">
 
+                        <div class="row">
                             <ExampleComponent image={image}
                                 roundedColor="#66A5CC"
                                 imageWidth="300"
                                 imageHeight="300"
                                 roundedSize="20"/>
-                                <div className="my-3 mx-3 float-left">
+                                </div>
+                              <div class="row">
+
+                                <div className="float-left">
                                 <StarRatings
                                   rating={3}
                                   starRatedColor="yellow"
@@ -75,7 +82,10 @@ class StoreElement extends Component {
                                   numberOfStars={5}
                                   name='rating'/>
                                 </div>
-                                <div className="my-3 mx-3 float-left">
+</div>
+<div class="row">
+
+                                <div className="float-left">
                                 <StarRatings
                                   rating={2}
                                   starRatedColor="yellow"
@@ -84,33 +94,38 @@ class StoreElement extends Component {
                                   numberOfStars={5}
                                   name='rating'/>
                                 </div>
+                                </div>
+</div>
+{/*<div class="col">
+
                             <div class="vl">
                             </div>
-                            </div>
-                        <div class="col-md-8 v2">
-                        <div class="card p-3 py-4 Card">
+                            </div>*/}
 
+                            <div class="col-md-9 fill">
                             <Carousel onSelect={this.handleNext}
                             onClick={this.handleNext} >
                           {/*this for the first of Ads*/}
                           {this.state.shopObjects.map((shopObjects1, index) =>
                             <Carousel.Item>
                             <div class="row d-flex justify-content-center">
-                            <div class="col-md-12">
-                            <CardDeck >
-                            <img src={require('./img/' +shopObjects1.image+ '.jpg')} alt="Chicago" width="1100" height="350" />
-                            </CardDeck>
-                            </div>
+                            <img src={require('./img/' +shopObjects1.image+ '.jpg')} alt="Chicago" width="1200" height="350" />
                             </div>
                             </Carousel.Item>
                           )}
                           </Carousel>
-                          </div>
-                          <button class="my-3 btn btn-secondary btn-block">View more Details</button>
+                          <button class="my-3 btn btn-secondary btn-block">Visit Website</button>
                           <hr class="new4"/>
+
+                          <hr class="new4"/>
+                          <CommentList/>
+                          </div>
+
                           </div>
                           </div>
                           </div>
+                          </div>
+
 
         )
     }

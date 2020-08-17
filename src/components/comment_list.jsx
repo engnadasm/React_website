@@ -5,11 +5,14 @@ import Comment from "./comment";
 import ImageUploader from 'react-images-upload';
 
 class CommentList extends Component {
+
   constructor(props) {
       super()
 
       this.state = {
           // Takes active tab from props if it is defined there
+          list: [],
+          favorites: [],
           flag: true,
           boolean : true,
           commentList:[
@@ -211,8 +214,19 @@ class CommentList extends Component {
       // Bind the dropdownSelect function already here (not in the render function)
       this.Change1 = this.Change1.bind(this);
       this.Change2 = this.Change2.bind(this);
-
+      this.addFavorite = this.addFavorite.bind(this);
   }
+  addFavorite = favorite => {
+    alert("clicked button");
+
+    const { favorites } = this.state;
+
+    if (!favorites.some(alreadyFavorite => alreadyFavorite.id == favorite.id)) {
+      this.setState({
+        commentList: [...this.state.commentList, favorite]
+      });
+    }
+  };
   onDrop(picture) {
        this.setState({
            pictures: this.state.pictures.concat(picture),
@@ -224,6 +238,7 @@ class CommentList extends Component {
   this.setState({
     flag : true});
   }
+
   Change2=()=>{
   console.log("clicked-----------------------");
   alert("clicked ");
@@ -243,6 +258,13 @@ class CommentList extends Component {
     }
   }
   render() {
+    const user =
+    {id:66,
+     image:'5',
+     title:'Title66',
+     rating:2,
+    description:'description66'
+  }
     return (
       <div class="row justify-content-center">
         <div class="col-sm-10 col-sm-offset-1" id="logout">
@@ -278,7 +300,7 @@ class CommentList extends Component {
             </ul>
             </Collapse>
             <Collapse class="collapse" isOpen={!this.state.flag}>
-                    <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                    <form class="form-horizontal" id="commentForm" role="form">
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">Comment</label>
                             <div class="col-sm-10">
@@ -298,11 +320,11 @@ class CommentList extends Component {
                             <CustomInput type="file" name="file" id="exampleFile" />
                           </Col>
 
-
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                            <button class="btn btn-info btn-circle text-uppercase" type="submit" id="submitComment">
+                            <button class="btn btn-info btn-circle text-uppercase"
+                            >
                              Summit comment</button>
                             </div>
                         </div>

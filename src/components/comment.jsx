@@ -37,7 +37,7 @@ const Example = (props) => {
                               onClick={toggle} href="#replyOne">{props.List.length + " comments"}</a>
                               <Collapse class="collapse" isOpen={isOpen2}>
                               <Card style={{background: "#66A5CC"}}>
-                              <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                              <form class="form-horizontal" id="commentForm" role="form">
                                   <div class="form-group">
                                       <label for="email" class="col-sm-2 control-label">Comment</label>
                                       <div class="col-sm-10">
@@ -46,7 +46,7 @@ const Example = (props) => {
                                   </div>
                                   <div class="form-group">
                                       <div class="col-sm-offset-2 col-sm-10">
-                                          <button class="btn btn-info btn-circle text-uppercase" type="submit" id="submitComment"
+                                          <button class="btn btn-info btn-circle text-uppercase"
                                           >
                                            Summit comment</button>
                                       </div>

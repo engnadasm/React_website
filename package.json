@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "google-map-react": "^2.0.8",
     "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",

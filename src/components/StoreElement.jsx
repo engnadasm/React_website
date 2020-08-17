@@ -9,6 +9,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Carousel from 'react-bootstrap/Carousel';
 import ShopInHome from "./ShopInHome";
 import CommentList from "./comment_list";
+import Info from "./info";
 
 class StoreElement extends Component {
     constructor(){
@@ -116,7 +117,7 @@ class StoreElement extends Component {
                           </Carousel>
                           <button class="my-3 btn btn-secondary btn-block">Visit Website</button>
                           <hr class="new4"/>
-
+                          <Info/>
                           <hr class="new4"/>
                           <CommentList/>
                           </div>

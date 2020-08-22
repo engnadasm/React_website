@@ -26,6 +26,12 @@ class Shop extends Component {
     }
 
     renderButtons=()=>{
+      var buttonStyle;
+      if (this.state.isHovered) {
+        buttonStyle= {backgroundColor: "Transparent", border:"none", color:"white", outline:"none"}
+      }else{
+         buttonStyle= {backgroundColor: "Transparent", border:"none", color:"black", outline:"none"}
+      }
       if (this.props.isStarred ){return (<OverlayTrigger
                                                     placement="top"
                                                     overlay={
@@ -34,7 +40,7 @@ class Shop extends Component {
                                                       </Tooltip>
                                                     }
                                                   >
-                                                    <button className="btn btn-outline-dark float-right"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                                                    <button style={buttonStyle} className="float-right"><i class="fa fa-heart" aria-hidden="true"></i></button>
                                            </OverlayTrigger>)}
      if ( this.props.isRemovable){ return (<OverlayTrigger
                                                     placement="top"
@@ -44,28 +50,31 @@ class Shop extends Component {
                                                       </Tooltip>
                                                     }
                                                   >
-                                                  <button className="btn btn-outline-dark float-right" onClick={()=>this.props.onRemove(this.props.shopObject)}><i className="fa fa-trash"></i></button>
+                                                  <button style={buttonStyle}  className="btn btn-outline-dark float-right" onClick={()=>this.props.onRemove(this.props.shopObject)}><i className="fa fa-trash"></i></button>
                                                   </OverlayTrigger>)}
       return(<div></div>)
     }
 	 render(){
              var mediaStyle;
              var buttonStyle;
+             var titleStyle;
              var className;
                if (this.state.isHovered) {
-                 mediaStyle = {height: 256,boxShadow: '0 4px 8px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}
+                 mediaStyle = {height: 256,boxShadow: '0 4px 8px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',backgroundColor:"#12a898", color:"white"}
                  className = "fade-in"
                  buttonStyle={}
+                 titleStyle={color: "white"}
                } else {
-                 mediaStyle = {color: '#000',boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}
+                 mediaStyle = {color: '#000',boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',backgroundColor:"white", color:"black"}
                  className = ""
                  buttonStyle={display:"none"}
+                titleStyle={color: "#12a898"}
 
                }
 
   		return (
   		<div className={className}  key={this.props.shopObject.id}>
-            <div className="my-3" style={{backgroundColor:"#b3ccff"}} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+            <div className="my-3" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
 
                 <Media style={mediaStyle}>
                       <img
@@ -77,10 +86,10 @@ class Shop extends Component {
                   />
                   <Media.Body>
                     <div>
-                    <h3  className="d-inline">{this.props.shopObject.title}</h3>
+                    <h3  className="d-inline" style={titleStyle}>{this.props.shopObject.title}</h3>
                     {this.renderButtons()}
                     </div>
-                    <p>
+                    <p style={{fontFamily:"Alata"}}>
                      {this.props.shopObject.description}
                     </p>
                     <div className="float-right">
@@ -96,7 +105,7 @@ class Shop extends Component {
                   </Media.Body>
 
                 </Media>
-                  <button style={buttonStyle}className="btn btn-outline-dark btn-block" onClick={()=>this.props.onSelect(this.props.shopObject)}>View More Details</button>
+                  <button style={buttonStyle}className="btn btn-dark btn-block" onClick={()=>this.props.onSelect(this.props.shopObject)}>View More Details</button>
             </div>
         </div>
   		)

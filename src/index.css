@@ -20,3 +20,15 @@ code {
   font-family: 'RubikMonoOne';
   src: local('RubikMonoOne'), url(./fonts/RubikMonoOne-Regular.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Alata';
+  src: local('Alata'), url(./fonts/Alata-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'PTSansNarrow';
+  src: local('PTSansNarrow'), url(./fonts/PTSansNarrow-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Anton';
+  src: local('Anton'), url(./fonts/Anton-Regular.ttf) format('truetype');
+}

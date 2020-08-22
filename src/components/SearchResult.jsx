@@ -79,7 +79,7 @@ class SearchResult extends Component {
 							  alignRight
 							  title="Sort by"
 							  id="dropdown-menu-align-right"
-							  variant="info"
+							  variant="dark"
 							>
 						  <Dropdown.Item eventKey="1">Name</Dropdown.Item>
 						  <Dropdown.Item eventKey="2">Rate</Dropdown.Item>

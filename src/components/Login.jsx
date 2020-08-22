@@ -53,7 +53,7 @@ class Login extends Component {
     
     return (
 <Modal size="sm" id="LoginPopup" tabIndex="-1" aria-labelledby="LoginPopupTitle" aria-hidden="true" show={this.props.showForm} onHide={()=>this.props.onClose()}>
-      <Modal.Header closeButton className="bg-danger">
+      <Modal.Header closeButton style={{backgroundColor:"#12a898", color:"white", fontFamily:"Alata"}}>
         <h5 className="modal-title" id="LoginPopupTitle">Login</h5>
       </Modal.Header>
       <Modal.Body>
@@ -91,8 +91,8 @@ class Login extends Component {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={()=>this.props.onClose()}>Cancel</button>
-        <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Login</button>
+        <button type="button" className="btn" style={{backgroundColor:"#12a898", color:"white"}} data-dismiss="modal" onClick={()=>this.props.onClose()}>Cancel</button>
+        <button type="submit" className="btn" style={{backgroundColor:"#12a898" , color:"white"}} onClick={this.handleSubmit}>Login</button>
       </Modal.Footer>
 </Modal>
 )

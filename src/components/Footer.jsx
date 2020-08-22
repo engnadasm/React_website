@@ -7,8 +7,8 @@ class Footer extends Component {
 
   		return (
   		<footer>
-        <div style={{backgroundColor:"#ccccff"}}>
-            <div className="row row-content pt-3">
+        <div style={{backgroundColor:"#12a898", color:"white"}}>
+            <div className="row row-content pt-3 pl-5">
                 <div className="col-12 col-offset-1 col-sm-4 ">
                     <h5>POPULAR SEARCHES</h5>
                     <ul className="list-unstyled">

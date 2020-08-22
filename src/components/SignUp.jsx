@@ -62,7 +62,7 @@ class SignUp extends Component {
                 </span>
  					    </div>
   					  <div className="form-group">
-    					  <label htmlFor="inputPhone">Phone number</label>
+    					  <label htmlFor="inputPhone">Phone Number</label>
    					    <input type="tel" className="form-control" id="inputPhone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required></input>
  					      <span style={{color: "red"}} className="invalid-message" id="phone">
                 {this.state.errors["phone"]}
@@ -111,7 +111,7 @@ class SignUp extends Component {
                 </span>
               </div>
               <div className="form-group">
-                <label htmlFor="iputEmail">Email address</label>
+                <label htmlFor="iputEmail">Email Address</label>
                 <input type="email" className="form-control" id="iputEmail" placeholder="name@example.com" required></input>
                 <span style={{color: "red"}} className="invalid-message" id="email">
                 {this.state.errors["email"]}

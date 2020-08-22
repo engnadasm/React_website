@@ -9,13 +9,14 @@ import Home from './Home';
 import Footer from './Footer';
 import SearchResult from './SearchResult';
 import StoreElement from "./StoreElement";
+import Logo from './img/N&T.png';
 
 class NavBar extends Component {
     constructor(props) {
 
         super()
         this.state = {
-            login: false,
+            showLogin: false,
             // Takes active tab from props if it is defined there
             activeDropMenu:  1,
             navTap: 1,
@@ -46,11 +47,8 @@ class NavBar extends Component {
               M : Home
           });
         }else if(selectedTab == 2){
-                        this.onOpenModalLogin()
-          this.setState({
-              //M : Login
+            this.onOpenModalLogin()
 
-          });
         }else if(selectedTab == 3){
           this.setState({
               M : SignUp
@@ -59,11 +57,11 @@ class NavBar extends Component {
 
     };
       onCloseModal = () => {
-        this.setState({ login: false });
+        this.setState({ showLogin: false });
     };
 
      onOpenModalLogin = () => {
-        this.setState({ login: true });
+        this.setState({ showLogin: true });
     };
     render() {
       if(!this.props.change) {
@@ -71,7 +69,7 @@ class NavBar extends Component {
           <React.Fragment>
             <Navbar fill variant="tabs" collapseOnSelect expand="lg" bg="dark" variant="dark"
             activeKey={this.state.navTap} onSelect={this.navSelect}>
-                <Navbar.Brand href="#home" >Alex Mall Logo</Navbar.Brand>
+                <Navbar.Brand href="#home" ><img className="pl-3" width="88" height= "45" src={Logo}></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -98,7 +96,7 @@ class NavBar extends Component {
             </Navbar>
             <React.StrictMode>
             <this.state.M/>
-            <Login showForm={this.state.login} onClose={this.onCloseModal}/>
+            <Login showForm={this.state.showLogin} onClose={this.onCloseModal}/>
             <Footer/>
             </React.StrictMode>
             </React.Fragment>

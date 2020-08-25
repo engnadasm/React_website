@@ -10,6 +10,37 @@ import Footer from './Footer';
 import SearchResult from './SearchResult';
 import StoreElement from "./StoreElement";
 import Logo from './img/N&T.png';
+import UserProfile from "./UserProfile";
+
+const Search = () => {
+  const [showResults, setShowResults] = React.useState(false)
+  const onClick = () => setShowResults(true)
+  //      <input type="submit" value="Search" onClick={onClick} />
+  return (
+    <div>
+        { showResults ? <Results /> : <Results2 /> }
+      </div>
+  )
+}
+const Results = () => (
+  <Nav inline>
+
+    <Nav.Link href="#SignIn" eventKey={2} to="/SignIn"
+    ><i class="fa fa-fw fa-sign-in" ></i> SignIn</Nav.Link>
+
+    <Nav.Link href="#SignUp" eventKey={3} to="/SignUp"
+    ><i class="fa fa-fw fa-user" ></i> SignUp</Nav.Link>
+    </Nav>
+)
+const Results2 = () => (
+  <Nav inline>
+    <Nav.Link href="#SignOut" eventKey={4} to="/SignOut"
+    ><i class="fa fa-fw fa-sign-out" ></i> SignOut</Nav.Link>
+
+    <Nav.Link href="#Profile" eventKey={5} to="/Profile"
+    ><i class="fa fa-fw fa-user-circle-o" ></i> UserProfile</Nav.Link>
+    </Nav>
+)
 
 class NavBar extends Component {
     constructor(props) {
@@ -40,7 +71,6 @@ class NavBar extends Component {
         this.setState({
             navTap: selectedTab
         });
-        alert("navTap "  + selectedTab)
 
         if(selectedTab == 1){
           this.setState({
@@ -48,10 +78,13 @@ class NavBar extends Component {
           });
         }else if(selectedTab == 2){
             this.onOpenModalLogin()
-
         }else if(selectedTab == 3){
           this.setState({
               M : SignUp
+          });
+        }else if(selectedTab == 5){
+          this.setState({
+              M : UserProfile
           });
         }
 
@@ -64,6 +97,7 @@ class NavBar extends Component {
         this.setState({ showLogin: true });
     };
     render() {
+
       if(!this.props.change) {
         return (
           <React.Fragment>
@@ -73,10 +107,10 @@ class NavBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link  href="#home" eventKey={1}
+                        <Nav.Link  href="#home" eventKey={1} to="/"
                         ><i class="fa fa-fw fa-home" ></i> Home</Nav.Link>
                         <NavDropdown  class="fa fa-fw fa-book" activeKey={this.state.activeDropMenu}
-                        onSelect={this.dropdownSelect} href="#Categories"
+                        onSelect={this.dropdownSelect} to="/Categories" href="#Categories"
                             title="Categories">
                             <NavDropdown.Item  href="#Categories" eventKey={1} >Shoes</NavDropdown.Item>
                             <NavDropdown.Item  href="#Categories"eventKey={2} >Kids</NavDropdown.Item>
@@ -86,12 +120,7 @@ class NavBar extends Component {
                             <NavDropdown.Item  href="#Categories"eventKey={5}>All</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Nav inline>
-                        <Nav.Link href="#Login" eventKey={2}
-                        ><i class="fa fa-fw fa-sign-in" ></i> Login</Nav.Link>
-                        <Nav.Link href="#SignUp" eventKey={3}
-                        ><i class="fa fa-fw fa-user" ></i> SignUp</Nav.Link>
-                    </Nav>
+                  <Search/>
                 </Navbar.Collapse>
             </Navbar>
             <React.StrictMode>

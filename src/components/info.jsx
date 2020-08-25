@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './info.css';
+import './css/info.css';
 
 class Info extends Component {
   render() {
     return (
-<section id="what-we-do" style={{backgroundColor : '#008080'}}>
+<section id="what-we-do" style={{backgroundColor : '#12A898'}}>
 		<div class="container-fluid">
 			<h2 class="section-title mb-2 h1">About_US</h2>
 			<div class="row">

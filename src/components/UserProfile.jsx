@@ -34,7 +34,7 @@ constructor(){
             },
             {id:2,
              image:'image2',
-            title:'Title2', 
+            title:'Title2',
             rating:4,
             description:'description2'
             },
@@ -46,7 +46,7 @@ constructor(){
             },
             {id:5,
              image:'image5',
-            title:'Title5', 
+            title:'Title5',
             rating:4,
             description:'description5'
             },
@@ -110,7 +110,7 @@ constructor(){
 		if(this.state.data === "Password"){
 		return(	<div>
 				<h3>Change Password</h3>
-				<label htmlFor="currentPassword">Enter your current password</label>                
+				<label htmlFor="currentPassword">Enter your current password</label>
                 <input type="password"id="currentPassword" className="form-control" placeholder="Old Password" onChange={this.handleCurrentPass} value={this.state.currentPass}></input>
                 <div className="col"><hr/></div>
 			    <label htmlFor="newPassword">Enter your new password</label>
@@ -130,7 +130,7 @@ constructor(){
 				<button className="btn btn-outline-dark float-right" onClick={this.enableEditing}><i className="fa fa-pencil"></i>Edit</button>
 				</div>
 				<label htmlFor="userName">User Name</label>
-				<input disabled ref={this.nameRef} type="text" id="userName" className="form-control" placeholder="User Name" value="User Name"></input>				
+				<input disabled ref={this.nameRef} type="text" id="userName" className="form-control" placeholder="User Name" value="User Name"></input>
 			    <label htmlFor="email">Email</label>
                 <input disabled ref={this.emailRef} type="email"id="email" className="form-control" placeholder="name@example.com" value="name@example.com"></input>
                 <label htmlFor="Work">Work</label>
@@ -147,7 +147,7 @@ constructor(){
 		return(<div>
 				<h3>My Favourites</h3>
 				{this.state.shopObjects.map(shopObject => <Shop isStarred={false} isRemovable={true} shopObject={shopObject} onSelect={this.viewShopPage} onRemove={this.removeItem}/>)}
-				</div>)			
+				</div>)
 		}
 
 

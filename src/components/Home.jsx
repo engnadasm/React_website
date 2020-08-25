@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './navbar.jsx';
-import Jumbotron from "./img/5.jpg"
 import './Home.css';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -14,12 +13,6 @@ import Footer from './Footer';
 import ShopInHome from "./ShopInHome";
 import StoreElement from "./StoreElement";
 
-var sectionStyle = {
-    backgroundImage: `url(${Jumbotron})`,
-    height:'100%',
-    width:'100%',
-}
-
 class Home extends Component {
 
   constructor(props) {
@@ -31,7 +24,9 @@ class Home extends Component {
         image:'3',
         title:'Title',
         rating:3,
-        description:'description'
+        description:'description',
+        stare : false
+
 
       });
       shopObjects1.push({
@@ -39,7 +34,9 @@ class Home extends Component {
         image:'4',
         title:'Title',
         rating:3,
-        description:'description'
+        description:'description',
+        stare : false
+
 
       });
       shopObjects1.push({
@@ -47,7 +44,9 @@ class Home extends Component {
         image:'3',
         title:'Title',
         rating:3,
-        description:'description'
+        description:'description',
+        stare : false
+
 
       });
       shopObjects1.push({
@@ -55,7 +54,9 @@ class Home extends Component {
         image:'5',
         title:'Title',
         rating:3,
-        description:'description'
+        description:'description',
+        stare : false
+
 
       });
 
@@ -71,62 +72,76 @@ class Home extends Component {
           image:'4',
           title:'Title1',
           rating:3,
-          description:'description2, i want to know what the maximum length of description'          },
+          description:'description2, i want to know what the maximum length of description',
+          stare : false
+          },
           {id:2,
            image:'3',
           title:'Title2',
           rating:4,
-          description:'description2'
+          description:'description2',
+          stare : false
+
           },
           {id:3,
            image:'5',
            title:'Title3',
            rating:2,
-          description:'description3'
+          description:'description3',
+          stare : false
+
           },
           {id:4,
            image:'6',
            title:'Titl4',
            rating:2,
-          description:'description4'
+          description:'description4',
+          stare : false
+
         },
           {id:5,
            image:'3',
           title:'Title5',
           rating:4,
-          description:'description5'
+          description:'description5',
+          stare : false
+
           },
           {id:6,
            image:'4',
            title:'Title6',
            rating:2,
-          description:'description6'
+          description:'description6',
+          stare : false
+
         },
         {id:7,
          image:'5',
          title:'Title7',
          rating:2,
-        description:'description7'
+        description:'description7',
+        stare : false
+
       },{id:8,
        image:'4',
        title:'Title8',
        rating:3,
-      description:'description8'
+      description:'description8',
+      stare : false
+
       }],
         flag : true,
-        page : 0
+        page : 0,
       };
       // Bind the dropdownSelect function already here (not in the render function)
       this.search_but = this.search_but.bind(this);
       this.handlePrevious = this.handlePrevious.bind(this);
       this.handleNext = this.handleNext.bind(this);
       this.viewShopPage = this.viewShopPage.bind(this);
+
   }
 
   viewShopPage=(shopObject)=>{
-  console.log("clicked-----------------------");
-  console.log(shopObject);
-  alert("clicked ");
   this.setState({
               M : StoreElement,
               flag : false,
@@ -134,18 +149,22 @@ class Home extends Component {
           });
   }
 
+  removeItem=(shopObject)=>{
+      shopObject.stare = false
+  }
+
+  addItem=(shopObject)=>{
+    shopObject.stare = true
+  }
+
   handlePrevious=()=>{
-console.log("Previous-----------------------");
-alert("Page Previous " + this.state.page);
 
 if(this.state.page > 0){
 this.setState({page : this.state.page -1})
 }
 }
 handleNext=()=>{
-console.log("Next-----------------------");
 var sum = this.state.shopObjects.length - 2 * (this.state.page + 1);
-console.log("Page Next " + this.state.page + "then " + sum);
 
 if(sum > 0){
   this.setState({page : this.state.page + 1})
@@ -165,6 +184,8 @@ if(sum > 0){
       });
 
   };
+
+
     render() {
       if(this.state.boolean) {
         return (
@@ -174,7 +195,7 @@ if(sum > 0){
             <div class="col-md-10">
             <div class="card p-3 py-4 Card">
             <h4 class= "advancedText" >&emsp; select Categories &emsp; &emsp; &emsp;
-            &emsp; &emsp; &emsp; &emsp; &emsp;
+            &emsp; &emsp; &emsp; &emsp;
             select Place</h4>
 
             {/*this for the rectangle of Search*/}
@@ -183,7 +204,7 @@ if(sum > 0){
             <div class="col-12">
             <div class="input-group">
             {/*this for the dropdown of Categories*/}
-            <Form.Control style={{background: "#00838f"}}  as="select" size="lg"  id="Categorieslist" >
+            <Form.Control style={{background: "#12A898"}}  as="select" size="lg"  id="Categorieslist" >
             <option value="1">All Categories</option>
             <option value="2">1 select</option>
             <option value="3">2 select</option>
@@ -230,11 +251,13 @@ if(sum > 0){
             <div class="col-md-10">
             <CardDeck >
 
-            <ShopInHome key={index * 3} shopObject={shopObjects1} onClick={this.viewShopPage}/>
+            <ShopInHome key={index * 3} shopObject={shopObjects1} onClick={this.viewShopPage}
+          isStarred={shopObjects1.stare} onStare={this.addItem} onRemove={this.removeItem}/>
 
             {this.state.shopObjects.slice(this.state.page * 2,(this.state.page + 1) * 2).map(shopObject =>
 
-              <ShopInHome shopObject={shopObject} onClick={this.viewShopPage}/>
+              <ShopInHome shopObject={shopObject} onClick={this.viewShopPage}
+              isStarred={shopObject.stare} onStare={this.addItem} onRemove={this.removeItem}/>
 
             )}
 

@@ -29,7 +29,7 @@
 }
 
 .form_body {
-    background-image: url(./img/6.jpg) !important;
+    background-image: url(./img/10.jpg) !important;
     background-repeat: no-repeat;
     background-size: cover; /* Resize the background image to cover the entire container */
     background-position: center; /* Center the image */
@@ -44,29 +44,29 @@
 
 .advancedText {
     text-decoration: none;
-    font-size: 25px;
-    color: #00838f
+    font-size: 30px;
+    color: black
 }
 
 .btn-secondary,
 .btn-secondary:focus,
 .btn-secondary:active {
     color: #fff;
-    background-color: #00838f !important;
-    border-color: #00838f !important;
+    background-color: #12A898 !important;
+    border-color: #12A898 !important;
     box-shadow: none
 }
 
 .advanced {
-    color: #00838f !important
+    color: #12A898 !important
 }
 .h.dropdown {
-    background: #00838f;
+    background: #12A898;
 }
 
 .form-control:focus {
     box-shadow: none;
-    border: 1px solid #00838f
+    border: 1px solid #12A898
 }
 
 .Card {
